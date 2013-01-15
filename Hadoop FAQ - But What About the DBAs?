@@ -1,60 +1,63 @@
-Hadoop FAQ - But What About the DBAs?
+<h1>Hadoop FAQ - But What About the DBAs?</h1>
 
-Inspired by a question on LinkedIn DBA Managers blog, but which I hear in every presentation:
+Inspired by a question on LinkedIn DBA Managers blog, but which I hear in every presentation: <br>
 
-"As we all see there are lot of things happening on Big Data using Hadoop etc.... 
-
-Can you let me know where do normal DBAs like fit in this : 
-DBAs supporting normal OLTP databases using Oracle, SQL Server databases 
-DBAs who support day to day issues in Datawarehouse environments . 
-
-Do DBAs need to learn Java (or) Storage Admin ( like SAN technology ) to get into Big Data ? "
-
+<i>"As we all see there are lot of things happening on Big Data using Hadoop etc.... <br>
+<br>
+Can you let me know where do normal DBAs like fit in this : <br>
+DBAs supporting normal OLTP databases using Oracle, SQL Server databases <br>
+DBAs who support day to day issues in Datawarehouse environments . <br>
+<br>
+Do DBAs need to learn Java (or) Storage Admin ( like SAN technology ) to get into Big Data ? "</i><br>
+<p>
 I hear few questions here:
-* Do DBAs have a place at all in Big Data and Hadoop world? If so, what is that place?
-* Do they need new skills? Which skills?
-
-Let me start by introducing everyone to a new role in many organizations: Hadoop Cluster Administrator. 
-Organizations that did not adopt Hadoop yet are sometimes imagining Hadoop as a developer-only system. Thats why I get million of "Do I need to learn Java" questions every time I mention Hadoop.
-Organizations that did adopt Hadoop find out that any production cluster than exceeds the 20-30 nodes range will require a full time admin. This admin's job is surprising similar to a DBA job - he is responsible for the performance and availability of the cluster, the data it countains and the jobs that run there. The list of tasks is almost endless, and also strangely familiar - deployment, upgrades, troubleshooting, configuration, tuning, job management, installing tools, architecting processes, monitoring, backups, recovery, etc, etc. 
-
+<ul>
+<li> Do DBAs have a place at all in Big Data and Hadoop world? If so, what is that place?</li>
+<li> Do they need new skills? Which skills?</li>
+</ul>
+Let me start by introducing everyone to a new role in many organizations: <b>Hadoop Cluster Administrator</b>. <br>
+Organizations that did not adopt Hadoop yet are sometimes imagining Hadoop as a developer-only system. Thats why I get million of "Do I need to learn Java" questions every time I mention Hadoop.<br>
+Organizations that did adopt Hadoop find out that any production cluster than exceeds the 20-30 nodes range will require a full time admin. This admin's job is surprising similar to a DBA job - he is responsible for the performance and availability of the cluster, the data it countains and the jobs that run there. The list of tasks is almost endless, and also strangely familiar - deployment, upgrades, troubleshooting, configuration, tuning, job management, installing tools, architecting processes, monitoring, backups, recovery, etc, etc.  
+<p>
 I did not see a single organization with production Hadoop cluster that didn't have a full-time admin, but if you don't believe me - note that Cloudera is offering Hadoop Administrator Certification, and that O'Reilly is selling a book called "Hadoop Operations". 
-
+<p>
 So you are going to need an Hadoop admin.
-
+<p>
 Who are the candidates for the position? Best option is to hire an experienced Hadoop admin. In 2-3 years no one will even consider doing anything else. But right now there is an extreme shortage of Hadoop admins, so we need to consider less perfect candidates.
 The usual suspects tend to be: Junior java developers, sys admins, storage admins and DBAs.
-
+<p>
 Junior java developers tend not to do well in cluster admin role, just like PL/SQL developers rarely make good DBAs. Operations and dev are two different career paths, that tend to attract different types of personalities. 
-
+<p>
 When we get to the operations personel - storage admins are usually out of consideration because their skillset is too unique and valuable at other parts of the organization. I've never seen a storage admin who became an Hadoop admin, or any place where it was even seriously considered.
-
+<p>
 I've seen both DBAs and sysadmins becoming excellent Hadoop admins. In my highly biased opinions, DBAs have some advantages:
+<ul>
+<li> Everyone knows DBA stands for "Default Blame Acceptor". Since the database is always blames, DBAs typically have great troubleshooting skills, processes and instincts. All those are critical for good cluster admins. </li>
 
-* Everyone knows DBA stands for "Default Blame Acceptor". Since the database is always blames, DBAs typically have great troubleshooting skills, processes and instincts. All those are critical for good cluster admins.
+<li> DBAs are used to manage a system with millions of knobs to turn, all of which have critical impact on the performance and availability of the system. Hadoop is similar to databases in this sense - tons of configurations to fine-tune. </li>
 
-* DBAs are used to manage a system with millions of knobs to turn, all of which have critical impact on the performance and availability of the system. Hadoop is similar to databases in this sense - tons of configurations to fine-tune.
+<li> DBAs, much more than sysadmins, are highly skilled in keeping developers in check and making sure no one accidentally causes critical performance issues on an entire system. Critical skill when managing Hadoop clusters. </li>
 
-* DBAs, much more than sysadmins, are highly skilled in keeping developers in check and making sure no one accidentally causes critical performance issues on an entire system. Critical skill when managing Hadoop clusters.
+<li> DBAs with experience in DWH (especially Exadata) is very valuable. There are many similarities between DWH workloads and Hadoop workloads, and similar principles guide the management of the system. </li>
 
-* DBAs with experience in DWH (especially Exadata) is very valuable. There are many similarities between DWH workloads and Hadoop workloads, and similar principles guide the management of the system.
-
-* DBAs tend to be really good about writing their own monitoring jobs when needed. Every production database system I've seen has crontab file full of customized monitors and maintenance jobs. This skill continues to be critical for Hadoop system.
-
+<li> DBAs tend to be really good about writing their own monitoring jobs when needed. Every production database system I've seen has crontab file full of customized monitors and maintenance jobs. This skill continues to be critical for Hadoop system. </li>
+</ul>
 To be fair, sysadmins also have important advantages:
-* They typically have more experience managing huge number of machines. Much more so than DBAs.
-* They have experience working with configuration management and deployment tools (puppet, chef), which is absolutely critical when managing large clusters.
-* They can feel more comfortable digging in the OS and network when configuring and troubleshooting systems, which is important part of Hadoop administration.
-
+<ul>
+<li> They typically have more experience managing huge number of machines. Much more so than DBAs. </li>
+<li> They have experience working with configuration management and deployment tools (puppet, chef), which is absolutely critical when managing large clusters. </li>
+<li> They can feel more comfortable digging in the OS and network when configuring and troubleshooting systems, which is important part of Hadoop administration. </li>
+</ul>
+<p>
 Note that in both cases I'm talking about good, experienced admins - not those that can just click their way through the UI. Those who really understand their systems, and also understand much of what is going on outside the specific system they are responsible for. You need DBAs who care about the OS, who understand how hardware choices impact performance, who understand workload characteristics and how to tune for them.
-
+<p>
 Another important aspect of DBAs in Hadoop world: Hadoop jobs often get data from databases, or output data to databases. Good DBA is very useful in making sure this doesn't cause issues (Even small hadoop clusters can easily bring down an Oracle database by starting too many full-table scans at once). But in this case, the DBA doesn't need to be part of the Hadoop team.
-
-What about Java?
+<p>
+<b>What about Java?</b></br>
 Hadoop is written in Java, and fairly large amount of Hadoop jobs will be written in Java too.
 Hadoop admins will need to be able to read Java error messages (because this is typically what you get from Hadoop), will need to understand concepts of Java virtual machines and a bit about tuning them, and being able to write small Java programs can help in troubleshooting. On the other hand, most admins don't need to write huge amounts of Hadoop code (you have developers for that), and for what they do write - non-Java solutions such as Streaming, Hive and Pig (and Impala!) can be enough. In my experience, good admins learn enough Java to work on Hadoop cluster within few days, there's really not that much to know. 
-
-What about SAN technology?
+<p>
+<br>What about SAN technology? </br>
 Hadoop storage system is very different from SAN. Hadoop admins will need to learn about HDFS, Hadoop's file system, but not about traditional SAN systems. Although, if they are DBAs or Sysadmins, I suspect they already know far too much about SAN storage.
 
 
